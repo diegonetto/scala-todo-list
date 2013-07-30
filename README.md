@@ -5,4 +5,7 @@
 - [Scala](http://www.scala-lang.org/)
 - [Play](http://www.playframework.com/)
 - [Heroku](http://www.heroku.com/)
+- [PostgreSQL](http://www.postgresql.org/)
+- [AngularJS](http://angularjs.org/)
+- [Bootstrap](http://getbootstrap.com/)
 
