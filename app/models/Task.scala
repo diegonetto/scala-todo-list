@@ -2,6 +2,8 @@ package models
 
 import anorm._
 import anorm.SqlParser._
+import play.api.db._
+import play.api.Play.current
 
 case class Task(id: Long, label: String)
 
@@ -14,7 +16,15 @@ object Task {
     }
   }
 
-  def all(): List[Task] = Nil
+  /**
+   * Use Play DB.withConnection helper to create and automatically release a JDBC
+   * connection. Then use Anorm SQL method to create the query. The 'as' method allows
+   * parsing the ResultSet using the 'task *' parser -- it will parse as many rows as 
+   * possible and then return a 'List[Task]' since the 'task' parser returns a 'Task'.
+   */
+  def all(): List[Task] = DB.withConnection { implicit c =>
+    SQL("select * from task").as(task *)
+  }
 
   def create(label: String) {}
 
