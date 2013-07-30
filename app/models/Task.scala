@@ -26,7 +26,13 @@ object Task {
     SQL("select * from task").as(task *)
   }
 
-  def create(label: String) {}
+  def create(label: String) {
+    DB.withConnection { implicit c =>
+      SQL("insert into task (label) values ({label})").on(
+        'label -> label
+      ).executeUpdate()
+    }
+  }
 
   def delete(id: Long) {}
 
