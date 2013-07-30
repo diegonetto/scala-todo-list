@@ -4,8 +4,6 @@ import play.api._
 import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
-import anorm._
-import anorm.SqlParser._
 import models.Task
 
 object Application extends Controller {
@@ -13,13 +11,6 @@ object Application extends Controller {
   val taskForm = Form(
     "label" -> nonEmptyText
   )
-
-  val task = {
-    get[Long]("id") ~
-    get[String]("label") map {
-      case id~label => Task(id, label)
-    }
-  }
   
   def index = Action {
     Redirect(routes.Application.tasks)
