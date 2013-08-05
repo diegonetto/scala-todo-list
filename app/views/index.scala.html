@@ -3,23 +3,38 @@
 @import helper._
 
 @main("Todo List") {
-    <div ng-controller="TodoListCtrl">
-        <h1 class="title">{{todos.length}} task(s)</h1>
+    <div class="row paper" ng-controller="TodoListCtrl">
+        <div class="margin col-1 col-lg-1"></div>
+        <div class="body col-11 col-lg-11">
+            <div class="heading">
+                <h1 class="title">{{todos.length}} task(s)</h1>
+                <hr>
+            </div>
 
-        <ul class="list-group">
-            <li class="list-group-item" ng-repeat="todo in todos">
-              {{todo}}
-            </li>
-        </ul>
+            <div class="list">
+                <ul>
+                    <li ng-repeat="todo in todos">
+                    {{todo}}
+                    <hr>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="footnote">
+                <p>Created by <a href="http://diegonetto.com" ,="" target="_blank">Diego Netto</a> © 2013
+            </div>
 
-        <h2>Add a new task</h2>
+<!--
+            <h2>Add a new task</h2>
 
-        @form(routes.Application.newTask) {
+            @form(routes.Application.newTask) {
 
-            @inputText(taskForm("label"))
+                @inputText(taskForm("label"))
 
-             <input type="submit" value="Create">
+                <input type="submit" value="Create">
 
-        }
+            }
+-->
+        </div>
     </div>
 }
